@@ -6,19 +6,27 @@
 ##The function makeCacheMatix return a list containing 4 functions viz function to  
 ##set the value of the matrix (which is passed as argument)
 ##get the value of the matrix
-##set the value of the inverse of the matrix in the parent environemtn (function makeCacheMatrix )
-##get the value of the inverse of the matrix (by retrieving the value in the globali variable in parent enviroment set by the set function)
+##set the value of the inverse of the matrix in the parent environment (function makeCacheMatrix )
+##get the value of the inverse of the matrix (by retrieving the value in the globali variable 
+##in parent enviroment set by the set function)
 
 makeCacheMatrix <- function(x = matrix()) {
   
   globali <- NULL
+  ## Set the data (matrix) in parent environement
   set <- function(y) {
     x <<- y
     globali <<- NULL
   }
+  ## Get the data (matrix) from the parent environement
   get <- function() x
+  ## Set the inverse of matrix in parent environement
   setinverse <- function(inverse) globali <<- inverse
+  
+  ## get the inverse of matrix in parent environement
   getinverse <- function() globali
+  
+  ## Return a list of the four functions
   list(set = set, get = get,
        setinverse = setinverse,
        getinverse = getinverse)
